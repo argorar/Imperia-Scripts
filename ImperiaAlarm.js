@@ -6,7 +6,9 @@
 // @author      argorar
 // @match       *.imperiaonline.org/imperia/game_v6/game/village.php
 // @grant       none
-// @version     1.1
+// @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
+// @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
+// @version     1.2
 // ==/UserScript==
 
 (function() {
@@ -43,7 +45,7 @@ setInterval(
                     break;
                 }
                 else{
-                    console.log("Is Safe!");
+                    console.log("El ataque no es de peligro.");
                 }
             }
         }
