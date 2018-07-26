@@ -9,7 +9,7 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
-// @version     1.3
+// @version     1.3.1
 // ==/UserScript==
 
 (function() {
@@ -41,12 +41,12 @@ function addJQuery(callback) {
 
 setInterval(
     function checker(){
-        var sound = document.createElement('object');
-        sound.setAttribute('width', '5px');
-        sound.setAttribute('height', '5px');
-        sound.setAttribute('data', 'https://freesound.org/data/previews/254/254819_4597795-lq.mp3');
         if(document.getElementsByClassName('ui-icon attack-me')[0] != null){
             document.location.href="javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))";//abre las misiones
+            var sound = document.createElement('object');
+            sound.setAttribute('width', '5px');
+            sound.setAttribute('height', '5px');
+            sound.setAttribute('data', 'https://freesound.org/data/previews/254/254819_4597795-lq.mp3');
             var tdElem = document.getElementsByClassName('numeral tooltip-arrow ui-pass');//lista de ataques
             var i;
             for (i = 0; i < tdElem.length; i++) {
