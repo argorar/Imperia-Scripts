@@ -9,7 +9,7 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
-// @version     1.3.1
+// @version     1.3.2
 // ==/UserScript==
 
 (function() {
@@ -37,30 +37,39 @@ function addJQuery(callback) {
     }, false);
     document.body.appendChild(script);
 }
-
+var estado=false;
 
 setInterval(
     function checker(){
         if(document.getElementsByClassName('ui-icon attack-me')[0] != null){
-            document.location.href="javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))";//abre las misiones
-            var sound = document.createElement('object');
+            if(estado == false){
+                document.location.href="javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))";//abre las misiones
+                estado=true;
+                var sound = document.createElement('object');
+                sound.setAttribute('width', '5px');
+                sound.setAttribute('height', '5px');
+                sound.setAttribute('data', 'https://freesound.org/data/previews/254/254819_4597795-lq.mp3');
+                var tdElem = document.getElementsByClassName('numeral tooltip-arrow ui-pass');//lista de ataques
+                var i;
+                for (i = 0; i < tdElem.length; i++) {
+                    var tdText = tdElem[i].innerText;//número del ejercito
+                    if(tdText.length > 3){//ataque mayor a 999 soldados
+                        document.body.appendChild(sound);
+                        break;
+                    }
+                    else{
+                        console.log("El ataque no es de peligro.");
+                    }
+                }
+            }
+            sound = document.createElement('object');
             sound.setAttribute('width', '5px');
             sound.setAttribute('height', '5px');
             sound.setAttribute('data', 'https://freesound.org/data/previews/254/254819_4597795-lq.mp3');
-            var tdElem = document.getElementsByClassName('numeral tooltip-arrow ui-pass');//lista de ataques
-            var i;
-            for (i = 0; i < tdElem.length; i++) {
-                var tdText = tdElem[i].innerText;//número del ejercito
-                if(tdText.length > 3){//ataque mayor a 999 soldados
-                    document.body.appendChild(sound);
-                    break;
-                }
-                else{
-                    console.log("El ataque no es de peligro.");
-                }
-            }
+            document.body.appendChild(sound);
         }
         else{
+            estado=false;
             console.log("No hay ataques.");
         }
 },5000);
