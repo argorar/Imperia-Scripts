@@ -9,7 +9,7 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
-// @version     1.3.2
+// @version     1.3.3
 // ==/UserScript==
 
 (function() {
@@ -26,6 +26,7 @@ Push.create("Información", {
     }
 });
 
+setInterval('location.reload()',600000);
 
 function addJQuery(callback) {
     var script = document.createElement("script");
@@ -38,7 +39,6 @@ function addJQuery(callback) {
     document.body.appendChild(script);
 }
 var estado=false;
-
 setInterval(
     function checker(){
         if(document.getElementsByClassName('ui-icon attack-me')[0] != null){
