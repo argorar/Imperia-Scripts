@@ -7,8 +7,8 @@
 // @match       *.imperiaonline.org/imperia/game_v6/game/village.php
 // @require     https://raw.githubusercontent.com/Nickersoft/push.js/master/bin/push.min.js
 // @grant       none
-// @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
-// @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.js
+// @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
+// @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
 // @version     1.3.3
 // ==/UserScript==
 
