@@ -1,4 +1,3 @@
-# Imperia Scripts
 <img align="center" src="img/banner.png" alt="Imperia Online">
 
 ## Alarma
