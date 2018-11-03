@@ -14,5 +14,12 @@ Se requiere tener instalado Tampermonkey.
 * Si usas [Chrome](https://tampermonkey.net/?ext=dhdg&browser=chrome)
 * Si usas [Firefox](https://tampermonkey.net/?ext=dhdg&browser=firefox)
 
-### Instalación
+### Instalación de Alarma
 [Click para Instalar](https://argorar.github.io/Imperia-Scripts/ImperiaAlarm.user.js)
+
+### Guía de uso
+A tener en cuenta; después de la instalación no es necesario activar la alarma manualmente, cada vez que se inicie sesión la alarma se activará.
+Para garantizar el correcto funcionamiento se recomienta **no tener más pestañas** junto con el juego, ya que los navegadores pueden interrumpir el funcionamiento del script.
+
+**Ejemplo**
+![ejemplo](img/ejemplo.png)
