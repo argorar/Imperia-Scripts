@@ -9,7 +9,7 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
-// @version     1.3.3
+// @version     1.3.4
 // ==/UserScript==
 
 (function() {
@@ -42,7 +42,7 @@ setInterval(
     function checker(){
         if(document.getElementsByClassName("ui-icon attack-me")[0] != null){
             if(estado === false){
-                document.location.href="javascript:void(xajax_viewMissions(container.open({saveName:"missions", title:"Mis misiones"}), {tab:"incoming"}))";//abre las misiones
+                document.location.href="javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))";//abre las misiones
                 estado=true;
                 var sound = document.createElement("object");
                 sound.setAttribute("width", "5px");
