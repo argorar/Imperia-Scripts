@@ -1,6 +1,9 @@
 <img align="center" src="img/banner.png" alt="Imperia Online">
 
 ## Alarma
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/426783b51b37442fb4886e51e53fd077)](https://www.codacy.com/app/argorar/Imperia-Scripts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=argorar/Imperia-Scripts&amp;utm_campaign=Badge_Grade)
+
 Alarma que se activa con ataques personales superiores a 999 soldados, re-diseñada para V6.
 
 ### Características
@@ -22,4 +25,5 @@ A tener en cuenta; después de la instalación no es necesario activar la alarma
 Para garantizar el correcto funcionamiento se recomienta **no tener más pestañas** junto con el juego, ya que los navegadores pueden interrumpir el funcionamiento del script.
 
 **Ejemplo**
+
 ![ejemplo](img/ejemplo.png)
