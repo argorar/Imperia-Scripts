@@ -9,7 +9,7 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
-// @version     1.3.4
+// @version     1.3.5
 // ==/UserScript==
 
 (function() {
@@ -37,34 +37,36 @@
     }, false);
     document.body.appendChild(script);
   }
+  //false: primera vez , true: no es la primera vez
   var estado = false;
   setInterval(
     function checker() {
-      if (document.getElementsByClassName("ui-icon attack-me")[0] != null) {
+      var personales = document.getElementsByClassName("ui-icon attack-me")[0];
+      var alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
+      if (document.getElementsByClassName(personales != null || alianza != null ) {
         if (estado === false) {
           document.location.href = "javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))"; //abre las misiones
-          estado = true;
-          var sound = document.createElement("object");
-          sound.setAttribute("width", "5px");
-          sound.setAttribute("height", "5px");
-          sound.setAttribute("data", "https://freesound.org/data/previews/254/254819_4597795-lq.mp3");
           var tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
-          var i;
-          for (i = 0; i < tdElem.length; i++) {
+          for (var i = 0; i < tdElem.length; i++) {
             var tdText = tdElem[i].innerText; //número del ejercito
             if (tdText.length > 3) { //ataque mayor a 999 soldados
-              document.body.appendChild(sound);
+              estado = true;
+              sonido();
               break;
             }
           }
         }
-        sound = document.createElement("object");
-        sound.setAttribute("width", "5px");
-        sound.setAttribute("height", "5px");
-        sound.setAttribute("data", "https://freesound.org/data/previews/254/254819_4597795-lq.mp3");
-        document.body.appendChild(sound);
+        sonido();
       } else { //No hay ataques
         estado = false; //se reinicia el estado
       }
     }, 5000);
+
+  function sonido() {
+    var sound = document.createElement("object");
+    sound.setAttribute("width", "5px");
+    sound.setAttribute("height", "5px");
+    sound.setAttribute("data", "https://freesound.org/data/previews/254/254819_4597795-lq.mp3");
+    document.body.appendChild(sound);
+  }
 })();
