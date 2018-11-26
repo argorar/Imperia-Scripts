@@ -43,7 +43,7 @@
     function checker() {
       var personales = document.getElementsByClassName("ui-icon attack-me")[0];
       var alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
-      if (document.getElementsByClassName(personales != null || alianza != null ) {
+      if (personales != null || alianza != null ) {
         if (estado === false) {
           document.location.href = "javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))"; //abre las misiones
           var tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
