@@ -1,5 +1,14 @@
 <img align="center" src="img/banner.png" alt="Imperia Online">
 
+# Tabla de Contenido
+
+* [Alarma](#alarma)
+  * [Características](#caracteristicas)
+  * [Requisitos](#requisitos)
+  * [Instalación de Alarma](#instalacion)
+  * [Guía de uso](#guia)
+* [Rueba de la Fortuna](#rueda-fortuna)
+
 ## Alarma
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/426783b51b37442fb4886e51e53fd077)](https://www.codacy.com/app/argorar/Imperia-Scripts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=argorar/Imperia-Scripts&amp;utm_campaign=Badge_Grade)
@@ -27,3 +36,59 @@ Para garantizar el correcto funcionamiento se recomienta **no tener más pestañ
 **Ejemplo**
 
 ![ejemplo](img/ejemplo.png)
+
+
+## Rueda de la fortuna
+Realizar varios intentos de doblar el premio de la rueda de la fortuna. **No gasta Diamantes.**
+
+* **Primer paso:** Abrir la taberna
+
+  ![Rueda de la fortuna](img/fortuna1.png)
+
+  Abrir la consola del navegador web *(clic derecho > inspeccionar elemento > consola)*. Pegar y ejecutar el siguiente código.
+
+  ```console
+  draggedWheel = true;
+  if (HAS_FLASH) {
+    flash.call('wheel').spin();
+  } else {
+    Wheel.loopAnimation();
+  }
+  $.post('json.php', {
+    controller: 'WheelOfFortune',
+    action: 'doSpin'
+  }, function(data) {
+    if (HAS_FLASH) {
+      data['callbackName'] = 'spinCallback';
+      flash.call('wheel').win(JSON.stringify(data));
+    } else {
+      Wheel.setWinner(data.win, data.spinCount, spinCallback, data);
+    }
+  }, 'json').fail(function() {
+  });
+  ```
+* **Segundo paso:** Después de obtenido el premio, jugar a las cartas para doblar el resultado.
+
+  ![Rueda de la fortuna 2](img/fortuna2.png)
+
+   Cuando se pierde, cerrar la venta de las cartas de la **X** de la parte suerior derecha, volver a ejecutar el código del paso anterior *(Esto devuelve el resultado del premio original, cambiando de 0 espías por perder el juego a 20 espías, el premio original para poder volver a jugar a las cartas)*.
+
+   ![Rueda de la fortuna 2](img/fortuna3.png)
+
+   Se recomienda repetir ese paso hasta cuatro veces.
+
+   ![Rueda de la fortuna 2](img/fortuna4.png)
+
+   Para finalizar, tomar el premio; en este ejemplo se triplico el resultado.
+
+* **Tercer paso: (Opcional)** En caso de que el bóton de selección de las cartas (rojo y negro) no sea visible, ejecutar el código en la consola correspondiente a cada carta.
+
+  **Rojo**
+  ```console
+  javascript:void(xajax_doChooseCard('modal',{'parentWinID': 'TavernContent','gType':'YjAwZmM4MzFkZjIxOTU3ZjIwYzI0NmE5NzIxYzE4MTA=','cType':1}))
+  ```
+
+  **Negro**
+  ```console
+  javascript:void(xajax_doChooseCard('modal',{'parentWinID': 'TavernContent','gType':'YjAwZmM4MzFkZjIxOTU3ZjIwYzI0NmE5NzIxYzE4MTA=','cType':2}))
+  ```

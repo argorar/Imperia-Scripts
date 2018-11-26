@@ -41,14 +41,14 @@
   var estado = false;
   setInterval(
     function checker() {
-      var personales = document.getElementsByClassName("ui-icon attack-me")[0];
-      var alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
+      let personales = document.getElementsByClassName("ui-icon attack-me")[0];
+      let alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
       if (personales != null || alianza != null ) {
         if (estado === false) {
           document.location.href = "javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))"; //abre las misiones
-          var tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
-          for (var i = 0; i < tdElem.length; i++) {
-            var tdText = tdElem[i].innerText; //número del ejercito
+          let tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
+          for (let i = 0; i < tdElem.length; i++) {
+            let tdText = tdElem[i].innerText; //número del ejercito
             if (tdText.length > 3) { //ataque mayor a 999 soldados
               estado = true;
               sonido();
@@ -63,7 +63,7 @@
     }, 5000);
 
   function sonido() {
-    var sound = document.createElement("object");
+    let sound = document.createElement("object");
     sound.setAttribute("width", "5px");
     sound.setAttribute("height", "5px");
     sound.setAttribute("data", "https://freesound.org/data/previews/254/254819_4597795-lq.mp3");
