@@ -3,11 +3,11 @@
 # Tabla de Contenido
 
 * [Alarma](#alarma)
-  * [Características](#caracteristicas)
+  * [Características](#características)
   * [Requisitos](#requisitos)
-  * [Instalación de Alarma](#instalacion)
-  * [Guía de uso](#guia)
-* [Rueba de la Fortuna](#rueda-fortuna)
+  * [Instalación de Alarma](#instalación-de-alarma)
+  * [Guía de uso](#guía-de-uso)
+* [Rueba de la Fortuna](#rueda-de-la-fortuna)
 
 ## Alarma
 
@@ -39,13 +39,13 @@ Para garantizar el correcto funcionamiento se recomienta **no tener más pestañ
 
 
 ## Rueda de la fortuna
-Realizar varios intentos de doblar el premio de la rueda de la fortuna. **No gasta Diamantes.**
+Con los siguientes pasos se puede realizar varios intentos de doblar el premio de la rueda de la fortuna por medio del juego de azar de las cartas. **No gasta Diamantes.**
 
 * **Primer paso:** Abrir la taberna
 
   ![Rueda de la fortuna](img/fortuna1.png)
 
-  Abrir la consola del navegador web *(clic derecho > inspeccionar elemento > consola)*. Pegar y ejecutar el siguiente código.
+  Abrir la consola del navegador web *(clic derecho > inspeccionar elemento > consola)*. Pegar y ejecutar *(tecla enter)* el siguiente código.
 
   ```console
   draggedWheel = true;
