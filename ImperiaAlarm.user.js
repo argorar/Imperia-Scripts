@@ -9,21 +9,12 @@
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
-// @version     1.3.5
+// @version     1.3.6
 // ==/UserScript==
 
 (function() {
 
   "use strict";
-  Push.create("Información", {
-    body: "Alarma activada correctamente.",
-    icon: "https://ihcdn3.ioimg.org/iov6live/gui/favicon.png",
-    timeout: 4000,
-    onClick: function() {
-      window.focus();
-      this.close();
-    }
-  });
 
   setInterval("location.reload()", 600000);
 
@@ -37,30 +28,6 @@
     }, false);
     document.body.appendChild(script);
   }
-  //false: primera vez , true: no es la primera vez
-  var estado = false;
-  setInterval(
-    function checker() {
-      let personales = document.getElementsByClassName("ui-icon attack-me")[0];
-      let alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
-      if (personales != null || alianza != null ) {
-        if (estado === false) {
-          document.location.href = "javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))"; //abre las misiones
-          let tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
-          for (let i = 0; i < tdElem.length; i++) {
-            let tdText = tdElem[i].innerText; //número del ejercito
-            if (tdText.length > 3) { //ataque mayor a 999 soldados
-              estado = true;
-              sonido();
-              break;
-            }
-          }
-        }
-        sonido();
-      } else { //No hay ataques
-        estado = false; //se reinicia el estado
-      }
-    }, 5000);
 
   function sonido() {
     let sound = document.createElement("object");
@@ -69,4 +36,53 @@
     sound.setAttribute("data", "https://freesound.org/data/previews/254/254819_4597795-lq.mp3");
     document.body.appendChild(sound);
   }
+
+  function underAttack() {
+    let personales = document.getElementsByClassName("ui-icon attack-me")[0];
+    let alianza = document.getElementsByClassName("ui-icon attack-alliance")[0];
+    return personales != null || alianza != null;
+  }
+  //false: primera vez , true: no es la primera vez
+  var underAttackFlag = false;
+
+  function firstAttack() {
+    document.location.href = "javascript:void(xajax_viewMissions(container.open({saveName:'missions', title:'Mis misiones'}), {tab:'incoming'}))"; //abre las misiones
+    let tdElem = document.getElementsByClassName("numeral tooltip-arrow ui-pass"); //lista de ataques
+    for (let i = 0; i < tdElem.length; i++) {
+      let tdText = tdElem[i].innerText; //número del ejercito
+      if (tdText.length > 3) { //ataque mayor a 999 soldados
+        underAttackFlag = true;
+        sonido();
+        break;
+      }
+    }
+  }
+
+  setInterval(
+    function checker() {
+      if (underAttack()) {
+        if (underAttackFlag === false) {
+          firstAttack();
+        } else {
+          sonido();
+        }
+      } else { //No hay ataques
+        underAttackFlag = false; //se reinicia el estado
+      }
+    }, 5000);
+
+  function notification(title, msg) {
+    Push.create(title, {
+      body: msg,
+      icon: "https://ihcdn3.ioimg.org/iov6live/gui/favicon.png",
+      timeout: 4000,
+      onClick: function() {
+        window.focus();
+        this.close();
+      }
+    });
+  }
+
+  notification("Información", "Alarma activada correctamente.");
+
 })();
