@@ -38,7 +38,7 @@ Para garantizar el correcto funcionamiento se recomienta **no tener más pestañ
 ![ejemplo](img/ejemplo.png)
 
 
-## Rueda de la fortuna
+## Rueda de la fortuna (Parchado)
 Con los siguientes pasos se puede realizar varios intentos de doblar el premio de la rueda de la fortuna por medio del juego de azar de las cartas. **No gasta Diamantes.**
 
 * **Primer paso:** Abrir la taberna
