@@ -5,11 +5,12 @@
 // @icon        https://ihcdn3.ioimg.org/iov6live/gui/favicon.png
 // @author      argorar
 // @match       *.imperiaonline.org/imperia/game_v6/game/village.php
+// @match       *.gameofemperors.com/imperia/game_v6/game/village.php
 // @require     https://raw.githubusercontent.com/Nickersoft/push.js/master/bin/push.min.js
 // @grant       none
 // @updateURL    https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
 // @downloadURL  https://github.com/argorar/Imperia-Scripts/raw/master/ImperiaAlarm.user.js
-// @version     1.3.6
+// @version     1.4.0
 // ==/UserScript==
 
 (function() {
